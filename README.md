@@ -21,7 +21,7 @@ Use it:
         c:3
     };
     
-  var picked = cherrypick(someObject, 'a b');
+    var picked = cherrypick(someObject, 'a b');
   
 picked will be:
 
