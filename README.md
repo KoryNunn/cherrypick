@@ -38,7 +38,7 @@ You can switch to exclude mode by passing true as the second parameter:
         c:3
     };
     
-  var picked = cherrypick(someObject, true, 'a b');
+    var picked = cherrypick(someObject, true, 'a b');
   
 picked will be:
 
