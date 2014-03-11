@@ -1,0 +1,28 @@
+{
+  "name": "cherrypick",
+  "version": "0.0.0",
+  "main": "index.js",
+  "description":"Cherrypick properties off an object",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grape": "^0.1.9"
+  },
+  "dependencies": {
+    "grape": "~0.1.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/KoryNunn/cherrypick.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KoryNunn/cherrypick/issues"
+  },
+  "homepage": "https://github.com/KoryNunn/cherrypick"
+}
