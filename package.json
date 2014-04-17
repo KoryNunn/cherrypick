@@ -15,7 +15,8 @@
     "grape": "^0.1.9"
   },
   "dependencies": {
-    "grape": "~0.1.9"
+    "grape": "~0.1.9",
+    "statham": "^1.0.0"
   },
   "repository": {
     "type": "git",
