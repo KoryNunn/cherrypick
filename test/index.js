@@ -25,10 +25,26 @@ test('deep include', function(t){
     t.deepEqual(cherrypick(obj, 'a c d.e'), {a:1, c:3, d:{e:4}});
 });
 
+test('deep include null reference', function(t){
+    t.plan(1);
+
+    var obj = {a:1,b:2,c:3,d:{e:4}};
+
+    t.deepEqual(cherrypick(obj, 'l.e.l'), {});
+});
+
 test('deep exclude', function(t){
     t.plan(1);
 
     var obj = {a:1,b:2,c:3,d:{e:4}};
 
     t.deepEqual(cherrypick(obj, true, 'b d.e'), {a:1, c:3, d:{}});
+});
+
+test('deep exclude null reference', function(t){
+    t.plan(1);
+
+    var obj = {a:1,b:2,c:3,d:{e:4}};
+
+    t.deepEqual(cherrypick(obj, true, 'l.e.l'), {a:1,b:2,c:3,d:{e:4}});
 });

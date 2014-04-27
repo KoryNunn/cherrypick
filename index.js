@@ -22,12 +22,16 @@ function cherrypick(object, exclude, properties){
             deep = property.match(matchProp);
 
         if(deep){
-            result[deep[1]] = cherrypick(object[deep[1]], exclude, deep[2]);
+            if(deep[1] in object){
+                result[deep[1]] = cherrypick(object[deep[1]], exclude, deep[2]);
+            }
         }else{
             if(exclude){
                 delete result[property];
             }else{
-                result[property] = object[property];
+                if(property in object){
+                    result[property] = object[property];
+                }
             }
         }
     }
