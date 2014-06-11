@@ -66,9 +66,12 @@ test('deep include with tuples', function(t){
 });
 
 test('non object should return non object', function(t) {
-    t.plan(3);
+    t.plan(6);
 
-    t.equal('i am not an object', cherrypick('i am not an object', 'a b c'));
-    t.equal(undefined, cherrypick(undefined, 'a b c'));
-    t.equal(1, cherrypick(1, 'a b c'));
+    t.equal(cherrypick('i am not an object', 'a b c'), 'i am not an object');
+    t.equal(cherrypick(undefined, 'a b c'), undefined);
+    t.equal(cherrypick(1, 'a b c'), 1);
+    t.equal(cherrypick(null, 'a b c'), null);
+    t.deepEqual(cherrypick({a: null}, 'a.b'), {});
+    t.deepEqual(cherrypick({a: 2}, 'a.b'), {});
 });
