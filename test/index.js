@@ -64,3 +64,11 @@ test('deep include with tuples', function(t){
 
     t.deepEqual(cherrypick(obj, 'a c g:d.z:e'), {a:1, c:3, g:{z:4}});
 });
+
+test('non object should return non object', function(t) {
+    t.plan(3);
+
+    t.equal('i am not an object', cherrypick('i am not an object', 'a b c'));
+    t.equal(undefined, cherrypick(undefined, 'a b c'));
+    t.equal(1, cherrypick(1, 'a b c'));
+});

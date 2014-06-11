@@ -3,6 +3,9 @@ var matchTuple = /^(.*?)\:(.*?)$/,
     revive = require('statham/revive');
 
 function cherrypick(object, exclude, properties){
+    if(typeof object != 'object') {
+        return object;
+    }
     if(typeof exclude !== 'boolean'){
         properties = exclude;
         exclude = false;
