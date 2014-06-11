@@ -48,3 +48,19 @@ test('deep exclude null reference', function(t){
 
     t.deepEqual(cherrypick(obj, true, 'l.e.l'), {a:1,b:2,c:3,d:{e:4}});
 });
+
+test('include with tuples', function(t){
+    t.plan(1);
+
+    var obj = {a:1,b:2,c:3};
+
+    t.deepEqual(cherrypick(obj, 'a g:c'), {a:1, g:3});
+});
+
+test('deep include with tuples', function(t){
+    t.plan(1);
+
+    var obj = {a:1,b:2,c:3,d:{e:4}};
+
+    t.deepEqual(cherrypick(obj, 'a c g:d.z:e'), {a:1, c:3, g:{z:4}});
+});

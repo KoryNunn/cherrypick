@@ -1,4 +1,5 @@
-var matchProp = /^([^.]*?)\.(.*?)$/,
+var matchTuple = /^(.*?)\:(.*?)$/,
+    matchProp = /^([^.]*?)\.(.*?)$/,
     revive = require('statham/revive');
 
 function cherrypick(object, exclude, properties){
@@ -18,19 +19,21 @@ function cherrypick(object, exclude, properties){
     }
 
     for(var i = 0; i < properties.length; i++){
-        var property = properties[i],
+        var tuple = properties[i].match(matchTuple),
+            key = tuple && tuple[1] || null,
+            property = tuple && tuple[2] || properties[i],
             deep = property.match(matchProp);
 
         if(deep){
             if(deep[1] in object){
-                result[deep[1]] = cherrypick(object[deep[1]], exclude, deep[2]);
+                result[key || deep[1]] = cherrypick(object[deep[1]], exclude, deep[2]);
             }
         }else{
             if(exclude){
                 delete result[property];
             }else{
                 if(property in object){
-                    result[property] = object[property];
+                    result[key || property] = object[property];
                 }
             }
         }

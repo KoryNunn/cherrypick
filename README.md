@@ -63,3 +63,23 @@ You can also pick on dot-notated deeply nested keys:
     };
 
     var picked = cherrypick(someObject, 'a d.e.g');
+
+And you can change the name of keys using a tuple syntax:
+
+    var someObject = {
+        hello: 'world',
+        things:{
+            stuff: 'majigger'
+        }
+    };
+
+    var picked = cherrypick(someObject, 'greetings:hello things.whatsits:stuff');
+
+    ->
+
+    {
+        greetings: 'world',
+        things:{
+            whatsits: 'majigger'
+        }
+    }
