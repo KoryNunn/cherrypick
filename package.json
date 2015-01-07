@@ -15,6 +15,7 @@
     "grape": "^0.1.9"
   },
   "dependencies": {
+    "flat-merge": "^1.0.0",
     "grape": "~0.1.9",
     "statham": "^1.0.0"
   },

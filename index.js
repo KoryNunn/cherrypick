@@ -1,5 +1,6 @@
 var matchTuple = /^(.*?)\:(.*?)$/,
     matchProp = /^([^.]*?)\.(.*?)$/,
+    merge = require('flat-merge'),
     revive = require('statham/revive');
 
 function cherrypick(object, exclude, properties){
@@ -29,9 +30,9 @@ function cherrypick(object, exclude, properties){
 
         if(deep){
             if(deep[1] in object){
-                var value = cherrypick(object[deep[1]], exclude, deep[2]);
+                var value = cherrypick(exclude && result[deep[1]] || object[deep[1]], exclude, deep[2]);
                 if (value && typeof value === 'object') {
-                    result[key || deep[1]] = value;
+                    result[key || deep[1]] = exclude ? value : merge(result[key || deep[1]], value);
                 }
             }
         }else{
