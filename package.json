@@ -1,6 +1,6 @@
 {
   "name": "cherrypick",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "index.js",
   "description": "Cherrypick properties off an object",
   "directories": {
