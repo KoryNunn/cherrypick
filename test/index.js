@@ -91,3 +91,11 @@ test('non object should return non object', function(t) {
     t.deepEqual(cherrypick({a: null}, 'a.b'), {});
     t.deepEqual(cherrypick({a: 2}, 'a.b'), {});
 });
+
+test('escaped dots', function(t){
+    t.plan(1);
+
+    var obj = {'a.b':'a', a:{b:'b'}};
+
+    t.deepEqual(cherrypick(obj, 'a\\.b'), {'a.b':'a'});
+});
