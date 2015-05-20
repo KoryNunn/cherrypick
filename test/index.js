@@ -33,6 +33,14 @@ test('deep include multiple', function(t){
     t.deepEqual(cherrypick(obj, 'a.c a.d'), {a:{c:1,d:2}});
 });
 
+test('deep include multiples', function(t){
+    t.plan(1);
+
+    var obj = {a:{b:{c:1,d:2}}};
+
+    t.deepEqual(cherrypick(obj, 'a.b.c a.b.d'), {a:{b:{c:1,d:2}}});
+});
+
 test('deep include null reference', function(t){
     t.plan(1);
 
