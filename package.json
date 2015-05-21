@@ -7,12 +7,13 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "watch": "watchify test -o test/index.browser.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "grape": "^0.1.9"
+    "tape": "^4.0.0"
   },
   "dependencies": {
     "flat-merge": "^1.0.0",

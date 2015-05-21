@@ -1,4 +1,4 @@
-var test = require('grape');
+var test = require('tape');
 var cherrypick = require('../');
 
 test('include', function(t){
@@ -78,7 +78,7 @@ test('include with tuples', function(t){
 
     var obj = {a:1,b:2,c:3};
 
-    t.deepEqual(cherrypick(obj, 'a g:c'), {a:1, g:3});
+    t.deepEqual(cherrypick(obj, 'a c:g'), {a:1, g:3});
 });
 
 test('deep include with tuples', function(t){
@@ -86,7 +86,7 @@ test('deep include with tuples', function(t){
 
     var obj = {a:1,b:2,c:3,d:{e:4}};
 
-    t.deepEqual(cherrypick(obj, 'a c g:d.z:e'), {a:1, c:3, g:{z:4}});
+    t.deepEqual(cherrypick(obj, 'a c d.e:g.z'), {a:1, c:3, g:{z:4}});
 });
 
 test('non object should return non object', function(t) {
@@ -106,4 +106,20 @@ test('escaped dots', function(t){
     var obj = {'a.b':'a', a:{b:'b'}};
 
     t.deepEqual(cherrypick(obj, 'a\\.b'), {'a.b':'a'});
+});
+
+test('take if defined', function(t){
+    t.plan(1);
+
+    var obj = {b:2};
+
+    t.deepEqual(cherrypick(obj, 'a:a b:a c:a'), {a:2});
+});
+
+test('take if defined and null', function(t){
+    t.plan(1);
+
+    var obj = {b:undefined};
+
+    t.deepEqual(cherrypick(obj, 'a:a b:a c:a'), {a:undefined});
 });

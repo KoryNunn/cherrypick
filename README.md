@@ -73,7 +73,7 @@ And you can change the name of keys using a tuple syntax:
         }
     };
 
-    var picked = cherrypick(someObject, 'greetings:hello things.whatsits:stuff');
+    var picked = cherrypick(someObject, 'hello:greetings things.stuff:things.whatsits');
 
     ->
 
@@ -83,3 +83,23 @@ And you can change the name of keys using a tuple syntax:
             whatsits: 'majigger'
         }
     }
+
+## Breaking changes from v1 to v2
+
+the rename/tuple syntax has changed to be much less confusing.
+
+old:
+
+per key: putHere:fromHere
+
+    var obj = {a:1,b:2,c:3,d:{e:4}};
+
+    t.cherrypick(obj, 'a c g:d.z:e'); -> {a:1, c:3, g:{z:4}}
+
+new:
+
+per path: take.from.here:put.it.here
+
+    var obj = {a:1,b:2,c:3,d:{e:4}};
+
+    cherrypick(obj, 'a c d.e:g.z'); -> {a:1, c:3, g:{z:4}}
